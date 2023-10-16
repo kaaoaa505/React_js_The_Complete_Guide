@@ -1,3 +1,7 @@
+console.log(`
+===> users <===
+`);
+
 import User from "../models/User";
 
 let user_message = 'Hello world.';

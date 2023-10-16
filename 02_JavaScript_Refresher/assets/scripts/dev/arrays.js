@@ -1,3 +1,7 @@
+console.log(`
+===> arrays <===
+`);
+
 const hobbies = ['sport', 'cooking', 'reading'];
 console.log(hobbies.slice());
 

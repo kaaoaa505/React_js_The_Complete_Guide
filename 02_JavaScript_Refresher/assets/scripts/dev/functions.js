@@ -19,5 +19,15 @@ function greeting(greetFn){
 };
 
 greeting(() => {
-    console.log('greetFu from inside greeting');
-})
+    console.log('greetFu() from inside greeting()');
+});
+
+function init(){
+    function greet(){
+        console.log('greet() from inside init()');
+    }
+
+    greet();
+}
+
+init();

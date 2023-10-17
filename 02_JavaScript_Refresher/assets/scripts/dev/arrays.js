@@ -25,3 +25,7 @@ const new_hobbies_obj = new_hobbies.map(hobby => {
     return {hobby};
 });
 console.log(new_hobbies_obj);
+
+for(const one_hobby of hobbies){
+    console.log(`hobby of hobbies is: ${one_hobby}`);
+}

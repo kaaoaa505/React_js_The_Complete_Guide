@@ -1,10 +1,13 @@
-import { useState } from 'react';
-import ExpenseDate from '../ExpenseDate/ExpenseDate';
 import './ExpenseItem.css';
+
+import { useState } from 'react';
+
+import ExpenseDate from '../ExpenseDate/ExpenseDate';
 
 const ExpenseItem = (props) => {
     const [title, $title] = useState(props.expense.title);
     const [amount, $amount] = useState(props.expense.amount);
+    const [date, $date] = useState(props.expense.date);
 
     const editExpense = (event) => {
         let data_id = event.target.attributes['data-id'].value;
@@ -15,7 +18,7 @@ const ExpenseItem = (props) => {
 
     return (
         <div className="ExpenseItem">
-            <ExpenseDate date={props.expense.date} />
+            <ExpenseDate date={date} />
 
             <div className="description">
                 <h2>{title}</h2>

@@ -3,13 +3,13 @@ import './Expenses.css';
 import ExpenseItem from "./ExpenseItem/ExpenseItem";
 import Card from '../_components/Card/Card';
 
-function Expenses(props) {
+const Expenses = (props) => {
     return (
         <div className="Expenses">
             <Card className="bg-gray">
-            {props.expenses.map((expense, index) => (
-                <ExpenseItem key={index} expense={expense} />
-            ))}
+                {props.expenses.map((expense, index) => (
+                    <ExpenseItem key={index} expense={expense} />
+                ))}
             </Card>
         </div>
     );

@@ -1,6 +1,6 @@
 import './ExpenseDate.css';
 
-function ExpenseDate(props){
+const ExpenseDate = (props) => {
     return (
         <div className="ExpenseDate">
             <div className='date'>

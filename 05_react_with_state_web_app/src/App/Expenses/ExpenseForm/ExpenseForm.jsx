@@ -16,31 +16,53 @@ const ExpenseForm = (props) => {
     };
 
     const dateChange = (event) => {
-        $date(event.target.value);
+        $date(new Date(event.target.value));
     };
 
-    const formChange = (event) => {
-        console.log(title);
-        console.log(amount);
-        console.log(date);
+    const formSubmit = (event) => {
+        event.preventDefault();
+
+        const expenseData = {
+            title,
+            amount,
+            date
+        };
+
+        console.log(expenseData);
     };
 
     return (
-        <form className="ExpenseForm" onChange={formChange}>
+        <form className="ExpenseForm" onSubmit={formSubmit}>
             <div className="controls">
                 <div className="control">
                     <label>Title</label>
-                    <input type="text" onChange={titleChange} />
+                    <input
+                        type="text"
+                        value={title}
+                        onChange={titleChange}
+                    />
                 </div>
 
                 <div className="control">
                     <label>Amount</label>
-                    <input type="number" onChange={amountChange} min="0" step="0.01" />
+                    <input
+                        type="number"
+                        value={amount}
+                        onChange={amountChange}
+                        min="0"
+                        step="0.01"
+                    />
                 </div>
 
                 <div className="control">
                     <label>Date</label>
-                    <input type="date" onChange={dateChange} min="2023-01-01" max="2023-12-30" />
+                    <input
+                        type="date"
+                        value={date.toISOString().slice(0, 10)}
+                        onChange={dateChange}
+                        min="2023-01-01"
+                        max="2023-12-30"
+                    />
                 </div>
 
                 <div className="actions">

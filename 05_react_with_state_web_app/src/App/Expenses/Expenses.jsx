@@ -24,10 +24,10 @@ const Expenses = (props) => {
                 <ExpensesFilter selected={yearSelected} onChangeFilter={filterChange} />
 
                 {
-                    props.expenses.slice().length === 0 ? 
-                    <p>No expenses found.</p>
+                    props.expenses.length === 0 ? 
+                    <div className='no-items-found'>No expenses found.</div>
                     :
-                    props.expenses.slice().map((expense, index) => (
+                    props.expenses.map((expense, index) => (
                         (Number(yearSelected) === 0 || Number(expense.date.getFullYear()) === Number(yearSelected)) && <ExpenseItem key={index} expense={expense} deleteExpense={props.deleteExpense} />
                     ))
                 }

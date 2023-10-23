@@ -36,9 +36,7 @@ const initial_expenses = [
 ];
 
 const App = () => {
-  const [expenses, $expenses] = useState([
-    ...initial_expenses
-  ]);
+  const [expenses, $expenses] = useState(initial_expenses);
 
   const addExpense = (expense) => {
     $expenses(old => {
@@ -47,26 +45,17 @@ const App = () => {
         expense
       ];
     });
-
-    console.log(expenses);
   }
 
   const deleteExpense = (expense_id) => {
-
     $expenses(old => {
-      const result = [
-        ...old.filter(expense => Number(expense.id) !== Number(expense_id)).slice()
-      ];
-
-      console.log(`$expenses result is: `, result);
-
-      return result;
+      return old.filter(expense => Number(expense.id) !== Number(expense_id));
     });
   }
 
   return (
     <div className="App">
-      <Expenses expenses={expenses.slice()} onCreateExpense={addExpense} deleteExpense={deleteExpense} />
+      <Expenses expenses={expenses} onCreateExpense={addExpense} deleteExpense={deleteExpense} />
     </div>
   );
 }

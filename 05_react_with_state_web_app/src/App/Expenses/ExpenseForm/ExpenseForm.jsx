@@ -35,8 +35,9 @@ const ExpenseForm = (props) => {
         <form className="ExpenseForm" onSubmit={formSubmit}>
             <div className="controls">
                 <div className="control">
-                    <label>Title</label>
+                    <label htmlFor='title'>Title</label>
                     <input
+                        id='title'
                         type="text"
                         value={title}
                         onChange={titleChange}
@@ -44,8 +45,9 @@ const ExpenseForm = (props) => {
                 </div>
 
                 <div className="control">
-                    <label>Amount</label>
+                    <label htmlFor='amount'>Amount</label>
                     <input
+                        id='amount'
                         type="number"
                         value={amount}
                         onChange={amountChange}
@@ -55,8 +57,9 @@ const ExpenseForm = (props) => {
                 </div>
 
                 <div className="control">
-                    <label>Date</label>
+                    <label htmlFor='date'>Date</label>
                     <input
+                        id='date'
                         type="date"
                         value={date.toISOString().slice(0, 10)}
                         onChange={dateChange}

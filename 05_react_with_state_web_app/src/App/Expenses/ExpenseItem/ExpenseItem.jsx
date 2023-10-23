@@ -5,27 +5,21 @@ import { useState } from 'react';
 import ExpenseDate from '../ExpenseDate/ExpenseDate';
 
 const ExpenseItem = (props) => {
-    const [title, $title] = useState(props.expense.title);
-    const [amount, $amount] = useState(props.expense.amount);
-    const [date, $date] = useState(props.expense.date);
-
-    const editExpense = (event) => {
+    const deleteExpense = (event) => {
         let data_id = event.target.attributes['data-id'].value;
-        console.log(data_id);
-        $title(data_id);
-        $amount(data_id*amount);
+        props.deleteExpense(data_id);
     }
 
     return (
         <div className="ExpenseItem">
-            <ExpenseDate date={date} />
+            <ExpenseDate date={props.expense.date} />
 
             <div className="description">
-                <h2>{title}</h2>
-                <div className="price">${amount}</div>
+                <h2>{props.expense.title}</h2>
+                <div className="price">${props.expense.amount}</div>
             </div>
 
-            <button data-id={props.expense.id} id={'btn-' + props.expense.id} onClick={editExpense}>Edit</button>
+            <button data-id={props.expense.id} onClick={deleteExpense}>Delete</button>
         </div>
     );
 }

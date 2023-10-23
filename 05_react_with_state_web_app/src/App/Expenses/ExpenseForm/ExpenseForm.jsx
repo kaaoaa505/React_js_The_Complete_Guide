@@ -28,7 +28,7 @@ const ExpenseForm = (props) => {
             date
         };
 
-        console.log(expenseData);
+        props.onSubmitExpenseForm(expenseData);
     };
 
     return (

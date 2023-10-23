@@ -8,7 +8,7 @@ import Card from '../_components/Card/Card';
 const Expenses = (props) => {
     return (
         <div className="Expenses">
-            <ExpenseCreate />
+            <ExpenseCreate onCreateExpense={props.onCreateExpense} />
             
             <Card className="bg-gray">
                 {props.expenses.map((expense, index) => (

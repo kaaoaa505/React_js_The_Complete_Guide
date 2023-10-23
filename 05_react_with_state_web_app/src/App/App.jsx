@@ -29,9 +29,14 @@ const App = () => {
     },
   ];
 
+  const addExpense = (expense) => {
+    expenses.push(expense);
+    console.log(expenses);
+  }
+
   return (
     <div className="App">
-      <Expenses expenses={expenses} />
+      <Expenses expenses={expenses} onCreateExpense={addExpense} />
     </div>
   );
 }

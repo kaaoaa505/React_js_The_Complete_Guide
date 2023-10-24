@@ -2,6 +2,10 @@ import Chart from "../../_components/Chart/Chart";
 
 const ExpensesChart = (props) => {
 
+    const checkFilterOnExpense = (expense) => {
+        return (Number(props.year_selected) === 0 || Number(expense.date.getFullYear()) === Number(props.year_selected));
+    }
+
     const months = [];
     for (let i = 1; i <= 12; i++) {
         const date = new Date(`2000-${i}-01`);
@@ -16,17 +20,19 @@ const ExpensesChart = (props) => {
     const data_by_months = [];
     let max_by_titles = 0;
     props.expenses.map(expense => {
-        points_by_titles.push({
-            label: expense.title,
-            value: expense.amount
-        });
+        if (checkFilterOnExpense(expense)) {
+            points_by_titles.push({
+                label: expense.title,
+                value: expense.amount
+            });
 
-        if (expense.amount > max_by_titles) max_by_titles = expense.amount;
+            if (expense.amount > max_by_titles) max_by_titles = expense.amount;
 
-        if (data_by_months[expense.date.toLocaleString('default', { month: 'long' })]) {
-            data_by_months[expense.date.toLocaleString('default', { month: 'long' })] += expense.amount;
-        } else {
-            data_by_months[expense.date.toLocaleString('default', { month: 'long' })] = expense.amount;
+            if (data_by_months[expense.date.toLocaleString('default', { month: 'long' })]) {
+                data_by_months[expense.date.toLocaleString('default', { month: 'long' })] += expense.amount;
+            } else {
+                data_by_months[expense.date.toLocaleString('default', { month: 'long' })] = expense.amount;
+            }
         }
     });
 

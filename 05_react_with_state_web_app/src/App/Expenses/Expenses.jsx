@@ -25,7 +25,7 @@ const Expenses = (props) => {
 
                 <ExpensesList expenses={props.expenses} year_selected={year_selected} deleteExpense={props.deleteExpense} />
 
-                <ExpensesChart expenses={props.expenses} />
+                <ExpensesChart expenses={props.expenses} year_selected={year_selected} />
             </Card>
         </div>
     );

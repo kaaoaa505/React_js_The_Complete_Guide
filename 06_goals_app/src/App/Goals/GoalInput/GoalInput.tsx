@@ -16,10 +16,10 @@ const GoalInput = (props: any) => {
   const formSubmit = (event: { preventDefault: () => void; }) => {
     event.preventDefault();
 
-    if(entered_value.trim().length === 0){
+    if (entered_value.trim().length === 0) {
       $is_valid_value(false);
       return;
-    }else{
+    } else {
       $is_valid_value(true);
       props.onAddGoal(entered_value);
     }
@@ -27,11 +27,9 @@ const GoalInput = (props: any) => {
 
   return (
     <form className='GoalInput' onSubmit={formSubmit}>
-      <div className="form-control">
+      <div className={`form-control ${is_valid_value ? '' : 'invalid'}`}>
         <label>Goal</label>
-        <input type="text" onChange={goalInputChange} style={{
-          border: is_valid_value ? '1px solid black' : '1px solid red'
-        }} />
+        <input type="text" onChange={goalInputChange} />
       </div>
       <Button type="submit">Add Goal</Button>
     </form>

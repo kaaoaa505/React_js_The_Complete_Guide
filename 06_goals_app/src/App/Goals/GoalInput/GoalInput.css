@@ -22,3 +22,12 @@
     background: whitesmoke;
     border-color: blue;
 }
+
+
+.form-control.invalid label {
+    font-weight: lighter;
+}
+
+.form-control.invalid input {
+    border: 1px solid red;
+}

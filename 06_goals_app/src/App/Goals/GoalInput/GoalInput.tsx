@@ -1,4 +1,4 @@
-import './GoalInput.css';
+import './GoalInput.scss';
 
 import { SetStateAction, useState } from 'react';
 
@@ -29,7 +29,7 @@ const GoalInput = (props: any) => {
     <form className='GoalInput' onSubmit={formSubmit}>
       <div className={`form-control ${is_valid_value ? '' : 'invalid'}`}>
         <label>Goal</label>
-        <input type="text" onChange={goalInputChange} />
+        <input type="text" onChange={goalInputChange} placeholder='New goal...' />
       </div>
       <Button type="submit">Add Goal</Button>
     </form>

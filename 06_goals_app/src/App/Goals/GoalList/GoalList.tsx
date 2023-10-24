@@ -1,4 +1,4 @@
-import './GoalList.css';
+import './GoalList.scss';
 
 import GoalItem from '../GoalItem/GoalItem';
 

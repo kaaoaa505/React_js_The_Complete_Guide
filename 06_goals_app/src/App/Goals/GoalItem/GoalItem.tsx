@@ -1,4 +1,4 @@
-import './GoalItem.css';
+import './GoalItem.scss';
 
 const GoalItem = (props: any) => {
     const deleteGoalItem = () => {

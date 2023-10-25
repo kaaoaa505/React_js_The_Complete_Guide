@@ -13,7 +13,7 @@ const App = () => {
     },
     {
       id: 2,
-      text: 'Walk one hour or more every day.',
+      text: 'Walk in streets one hour or more every day.',
     },
     {
       id: 3,
@@ -21,11 +21,11 @@ const App = () => {
     },
     {
       id: 4,
-      text: 'Work from office, Never remote from home.',
+      text: 'Work from office onsite, Never remote from home.',
     },
     {
       id: 5,
-      text: 'Sleep early, in a dark room with good air.',
+      text: 'Sleep early, In a dark room with good air.',
     },
   ]);
 

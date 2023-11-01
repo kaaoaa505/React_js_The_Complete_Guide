@@ -1,0 +1,21 @@
+.ResultDisplay {
+    .result {
+        max-width: 800px;
+        margin: 1px auto;
+        padding: 1px;
+        table-layout: fixed;
+        border-spacing: 15px;
+        text-align: center;
+
+        thead {
+            font-size: 18px;
+            color: lightblue;
+        }
+
+        tbody {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 14px;
+            color: lightgray;
+        }
+    }
+}

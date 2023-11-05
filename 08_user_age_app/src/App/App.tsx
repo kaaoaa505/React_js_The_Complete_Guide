@@ -7,6 +7,7 @@ import Users from './Users/Users';
 import React, { useState } from 'react';
 import ErrorModal from './_components/ErrorModal/ErrorModal';
 import Wrapper from './_components/Wrapper/Wrapper';
+import ReactDOM from 'react-dom';
 
 const initial_users: any[] = [];
 const initial_errors = {
@@ -46,12 +47,13 @@ const App = () => {
       <br />
       <React.Fragment>Web</React.Fragment> <>App</>
       <Card>
-        <UserCreate userCreateSubmit={addUserToUsers} errorsSubmit={addErrors}/>
+        <UserCreate userCreateSubmit={addUserToUsers} errorsSubmit={addErrors} />
       </Card>
 
       <Users users={users} />
 
-      <ErrorModal title={errors.title} content={errors.content} onErrorConfirm={errorHide} />
+      {ReactDOM.createPortal(<ErrorModal title={errors.title} content={errors.content} onErrorConfirm={errorHide} />, document.getElementById('root_overlays') as HTMLElement)}
+
     </div>
   );
 };

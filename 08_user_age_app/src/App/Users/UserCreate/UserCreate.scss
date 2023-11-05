@@ -1,0 +1,29 @@
+.UserCreate {
+  .form-group {
+    margin: 5px auto;
+    padding: 5px;
+    width: 90%;
+    max-width: 300px;
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 2px;
+    }
+
+    input {
+      font: inherit;
+      display: block;
+      width: 100%;
+      border: 1px solid #ccc;
+      padding: 5px;
+      margin-bottom: 2px;
+      background-color: lightgray;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #4f005f;
+    }
+  }
+}

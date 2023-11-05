@@ -1,0 +1,22 @@
+.Button {
+    font: inherit;
+    border: 1px solid gray;
+    background: gray;
+    color: white;
+    padding: 0.25rem 1rem;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.Button:hover,
+.Button:active {
+    background: lightgray;
+    border-color: lightgray;
+    color: gray;
+    border: 1px solid black;
+}
+
+.Button:focus {
+    outline: none;
+}

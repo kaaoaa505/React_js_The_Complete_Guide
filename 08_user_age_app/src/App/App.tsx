@@ -6,6 +6,7 @@ import UserCreate from './Users/UserCreate/UserCreate';
 import Users from './Users/Users';
 import { useState } from 'react';
 import ErrorModal from './_components/ErrorModal/ErrorModal';
+import Wrapper from './_components/Wrapper/Wrapper';
 
 const initial_users: any[] = [];
 const initial_errors = {
@@ -41,6 +42,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <Wrapper>Name with Age & ErrorModel</Wrapper>
       <Card>
         <UserCreate userCreateSubmit={addUserToUsers} errorsSubmit={addErrors}/>
       </Card>

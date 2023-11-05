@@ -1,8 +1,9 @@
 import Button from '../Button/Button';
+import Wrapper from '../Wrapper/Wrapper';
 import './ErrorModal.scss';
 
 const ErrorModal = (props: any) => {
-    if (props.title === '') return <></>;
+    if (props.title === '') return <Wrapper />;
 
     return (
         <div className="ErrorModal">

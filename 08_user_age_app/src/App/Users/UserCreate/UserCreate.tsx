@@ -28,7 +28,8 @@ const UserCreate = (props: any) => {
         console.log(age_input_ref.current);
 
         if(username.trim().length === 0 || age < 1){
-            console.log('Invalid input.')
+            console.log('Invalid input.');
+            
             props.errorsSubmit();
             return;
         }

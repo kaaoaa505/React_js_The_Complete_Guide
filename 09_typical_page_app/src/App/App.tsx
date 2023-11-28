@@ -7,16 +7,16 @@ import Home from './Home/Home';
 import Login from './Login/Login';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, $isLoggedIn] = useState(false);
 
   const loginHandler = (email: string, password: string) => {
     // We should of course check email and password
     // But it's just a dummy/ demo anyways
-    setIsLoggedIn(true);
+    $isLoggedIn(true);
   };
 
   const logoutHandler = () => {
-    setIsLoggedIn(false);
+    $isLoggedIn(false);
   };
 
   return (

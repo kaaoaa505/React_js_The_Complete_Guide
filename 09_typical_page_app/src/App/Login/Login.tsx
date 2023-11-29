@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import './Login.scss';
 import Card from '../_partial/Card/Card';
@@ -7,32 +7,24 @@ import Button from '../_partial/Button/Button';
 const Login = (props: any) => {
     const [enteredEmail, $enteredEmail] = useState('');
     const [emailIsValid, $emailIsValid] = useState(true);
+
     const [enteredPassword, $enteredPassword] = useState('');
     const [passwordIsValid, $passwordIsValid] = useState(true);
+
     const [formIsValid, $formIsValid] = useState(false);
+
+    useEffect(() => {
+        $emailIsValid(enteredEmail.includes('@'));
+        $passwordIsValid(enteredPassword.trim().length > 6);
+        $formIsValid(enteredEmail.includes('@') && enteredPassword.trim().length > 6);
+    }, [enteredEmail, enteredPassword]);
 
     const emailChangeHandler = (event: any) => {
         $enteredEmail(event.target.value);
-
-        $formIsValid(
-            event.target.value.includes('@') && enteredPassword.trim().length > 6
-        );
     };
 
     const passwordChangeHandler = (event: any) => {
         $enteredPassword(event.target.value);
-
-        $formIsValid(
-            event.target.value.trim().length > 6 && enteredEmail.includes('@')
-        );
-    };
-
-    const validateEmailHandler = () => {
-        $emailIsValid(enteredEmail.includes('@'));
-    };
-
-    const validatePasswordHandler = () => {
-        $passwordIsValid(enteredPassword.trim().length > 6);
     };
 
     const submitHandler = (event: any) => {
@@ -53,7 +45,6 @@ const Login = (props: any) => {
                         id="email"
                         value={enteredEmail}
                         onChange={emailChangeHandler}
-                        onBlur={validateEmailHandler}
                     />
                 </div>
                 <div
@@ -66,7 +57,6 @@ const Login = (props: any) => {
                         id="password"
                         value={enteredPassword}
                         onChange={passwordChangeHandler}
-                        onBlur={validatePasswordHandler}
                     />
                 </div>
                 <div className="actions">

@@ -14,6 +14,14 @@ const Login = (props: any) => {
     const [formIsValid, $formIsValid] = useState(false);
 
     useEffect(() => {
+        console.log('useEffect is running...');
+
+        return () => {
+            console.log('useEffect return method...');
+        }
+    });
+
+    useEffect(() => {
         const identifier = setTimeout(() => {
             console.log('Checking that everything is valid...');
 

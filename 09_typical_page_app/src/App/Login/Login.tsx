@@ -52,6 +52,9 @@ const Login = (props: any) => {
 
     const [formIsValid, $formIsValid] = useState(false);
 
+    const {is_valid: email_is_valid} = emailState;
+    const {is_valid: password_is_valid} = passwordState;
+
     useEffect(() => {
         console.log('useEffect is running...');
 
@@ -64,14 +67,14 @@ const Login = (props: any) => {
         const identifier = setTimeout(() => {
             console.log('Checking that everything is valid...');
 
-            $formIsValid(emailState.is_valid && passwordState.is_valid);
+            $formIsValid(email_is_valid && password_is_valid);
         }, 500);
 
         return () => {
             console.log('clean identifier timeout function...');
             clearTimeout(identifier);
         }
-    }, [emailState.value, passwordState.value]);
+    }, [email_is_valid, password_is_valid]);
 
     const emailChangeHandler = (event: any) => {
         dispatchEmail({
@@ -94,6 +97,12 @@ const Login = (props: any) => {
 
     function validateEmailHandler(): void {
         dispatchEmail({
+            type: 'USER_BLUR'
+        });
+    }
+
+    function validatePasswordHandler(): void {
+        dispatchPassword({
             type: 'USER_BLUR'
         });
     }
@@ -121,6 +130,7 @@ const Login = (props: any) => {
                         id="password"
                         value={passwordState.value}
                         onChange={passwordChangeHandler}
+                        onBlur={validatePasswordHandler}
                     />
                 </div>
 

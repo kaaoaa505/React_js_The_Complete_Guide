@@ -16,7 +16,7 @@ function App() {
     if (storage_is_logged_in === 'true') {
       $isLoggedIn(true);
     }
-  }, [storage_is_logged_in])
+  }, [storage_is_logged_in]);
 
   const loginHandler = (email: string, password: string) => {
     $isLoggedIn(true);
@@ -33,11 +33,13 @@ function App() {
   return (
     <AuthContext.Provider value={{
       is_logged_in: isLoggedIn,
+      onLogin: loginHandler,
+      onLogout: logoutHandler,
     }}>
-      <MainHeader onLogout={logoutHandler} />
+      <MainHeader />
       <main>
-        {!isLoggedIn && <Login onLogin={loginHandler} />}
-        {isLoggedIn && <Home onLogout={logoutHandler} />}
+        {!isLoggedIn && <Login />}
+        {isLoggedIn && <Home />}
       </main>
     </AuthContext.Provider>
   );

@@ -1,6 +1,15 @@
+import React, { useEffect, useRef } from 'react';
 import './Input.scss';
 
-const Input = (props: any) => {
+const Input = React.forwardRef((props: any, ref: any) => {
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        if (!props.valid) {
+            inputRef.current?.focus();
+        }
+    }, [props.valid]);
+
     return (
         <div className="Input">
             <div className={!props.valid ? 'control invalid' : 'control'}>
@@ -11,10 +20,11 @@ const Input = (props: any) => {
                     value={props.value}
                     onChange={props.onChange}
                     onBlur={props.onBlur}
+                    ref={inputRef}
                 />
             </div>
         </div>
     )
-}
+});
 
-export default Input;
+export default Input;   

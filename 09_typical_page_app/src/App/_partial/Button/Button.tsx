@@ -1,7 +1,7 @@
 
 import './Button.scss';
 
-const Button = (props:any) => {
+const Button = (props: any) => {
   return (
     <button
       type={props.type || 'button'}

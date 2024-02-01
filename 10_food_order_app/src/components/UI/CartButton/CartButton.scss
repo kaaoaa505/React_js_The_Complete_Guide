@@ -1,0 +1,31 @@
+.CartButton{
+    cursor: pointer;
+    font: inherit;
+    border: none;
+    background-color: rgb(172, 24, 24);
+    color: white;
+    padding: 12px 48px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 25px;
+    font-weight: bold;
+
+    span.cart_icon img{
+        height: 20px;
+    }
+
+    span.cart_txt{
+        margin-left: 5px;
+        font-size: larger;
+    }
+
+    span.cart_count{
+        font-size: small;
+    }
+}
+
+.CartButton:hover,
+.CartButton:active{
+    background-color: brown;
+}

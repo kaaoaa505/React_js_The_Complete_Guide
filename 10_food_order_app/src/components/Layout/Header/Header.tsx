@@ -1,12 +1,13 @@
 import './Header.scss';
 import MealsImage from '../../../assets/meals.jpg';
+import CartButton from '../../UI/CartButton/CartButton';
 
 const Header = () => {
     return (
         <div className="Header">
             <header>
                 <h1>ReactMeals</h1>
-                <button>Cart</button>
+                <CartButton />
             </header>
 
             <div className='cover'>

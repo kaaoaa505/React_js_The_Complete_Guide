@@ -1,0 +1,23 @@
+.MealItem {
+    // display: flex;
+    // justify-content: space-between;
+
+    margin: 16px;
+    padding-bottom: 16px;
+
+    border-bottom: 1px solid lightgray;
+
+    h3 {
+        margin-bottom: 4px;
+        color: orangered;
+    }
+
+    p {
+        text-shadow: 2px 2px yellow;
+    }
+
+    span {
+        margin-top: 14px;
+        color: orangered;
+    }
+}

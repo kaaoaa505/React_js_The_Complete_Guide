@@ -1,0 +1,21 @@
+.MealsSummary{
+    position: relative;
+
+    width: 90%;
+    max-width: 720px;
+
+    margin: -160px auto 0 auto;
+    padding: 16px;
+
+    text-align: center;
+    color: white;
+
+    border-radius: 14px;
+    box-shadow: 0 1px 18px 10px lightgrey;
+
+    h2{
+        margin-top: 0;
+        
+        font-size: 32px;
+    }
+}

@@ -1,0 +1,22 @@
+.MealItemForm{
+    text-align: right;
+    margin-top: 32px;
+
+    button{
+        color: white;
+        background-color: orangered;
+        
+        border: 1px solid orangered;
+        border-radius: 20px;
+
+        padding: 4px 32px;
+
+        font-weight: bold;        
+    }
+
+    button:hover,
+    button:active{
+        background-color: orange;
+    }
+
+}

@@ -1,9 +1,11 @@
 import './App.scss';
 
+import { useState } from 'react';
+
 import Header from '../components/Layout/Header/Header';
 import Meals from './Meals/Meals';
 import Cart from './Cart/Cart';
-import { useState } from 'react';
+import CartProvider from '../store/CartProvider';
 
 function App() {
   const [showCart, $showCart] = useState(false);
@@ -15,18 +17,20 @@ function App() {
   const onShowCart = () => {
     cartHandler(true);
   }
-    
+
   const onHideCart = () => {
     cartHandler(false);
   }
 
   return (
-    <div className="App">
-      {showCart && <Cart hideCart={onHideCart}  />}
-      
-      <Header showCart={onShowCart} />
-      <Meals />
-    </div>
+    <CartProvider>
+      <div className="App">
+        {showCart && <Cart hideCart={onHideCart} />}
+
+        <Header showCart={onShowCart} />
+        <Meals />
+      </div>
+    </CartProvider>
   );
 }
 

@@ -10,6 +10,8 @@ const Cart = (props: any) => {
         </li>
     );
 
+    const orderAction = () => console.log('todo order');
+
     return (
         <Modal onClick={props.hideCart}>
             <div className='Cart'>
@@ -25,7 +27,7 @@ const Cart = (props: any) => {
                 <div className='actions'>
                     <button className='btn_inverse' type='button' onClick={props.hideCart}>Close</button>
 
-                    <button className='btn_main' type='button'>Order</button>
+                    <button className='btn_main' type='button' onClick={orderAction}>Order</button>
                 </div>
             </div>
         </Modal>

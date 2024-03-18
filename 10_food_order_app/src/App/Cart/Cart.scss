@@ -1,4 +1,7 @@
 .Cart {
+    max-height: 50vh;
+    overflow: auto;
+
     .items {
         list-style: none;
         margin: 0;

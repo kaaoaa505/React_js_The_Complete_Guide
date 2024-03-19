@@ -1,4 +1,4 @@
-.CartButton{
+.CartButton {
     cursor: pointer;
     font: inherit;
     border: none;
@@ -11,21 +11,47 @@
     border-radius: 25px;
     font-weight: bold;
 
-    span.cart_icon img{
+    span.cart_icon img {
         height: 20px;
     }
 
-    span.cart_txt{
+    span.cart_txt {
         margin-left: 5px;
         font-size: larger;
     }
 
-    span.cart_count{
+    span.cart_count {
         font-size: small;
     }
 }
 
 .CartButton:hover,
-.CartButton:active{
+.CartButton:active {
     background-color: brown;
+}
+
+.CartButton.bump {
+    animation: bump 300ms ease-out;
+}
+
+@keyframes bump {
+    0% {
+        transform: scale(1);
+    }
+
+    10% {
+        transform: scale(0.9);
+    }
+
+    30% {
+        transform: scale(1.1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }

@@ -28,15 +28,8 @@ const CartReducer = (state: any, action: any) => {
         if (item_found_index >= 0) {
             total_amount -= Number(items[item_found_index].price);
 
-            if (items[item_found_index]['amount'] === 1) {
-                delete items[item_found_index];
-
-                let new_items_array = [];
-                for (let i = 0; i < items.length; i++) {
-                    items[i] && new_items_array.push(items[i]);
-                }
-
-                items = new_items_array;
+            if (items[item_found_index]['amount'] === 1) {           
+                items = items.slice().filter((item: any) => item.id !== action.id);
             } else {
                 items[item_found_index]['amount'] -= 1;
             }

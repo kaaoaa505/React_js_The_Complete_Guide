@@ -1,6 +1,8 @@
-import { useContext } from 'react';
-import MealItemForm from '../MealItemForm/MealItemForm';
 import './MealItem.scss';
+
+import { useContext } from 'react';
+
+import MealItemForm from '../MealItemForm/MealItemForm';
 import CartContext from '../../../store/CartContext';
 
 const MealItem = (props: any) => {

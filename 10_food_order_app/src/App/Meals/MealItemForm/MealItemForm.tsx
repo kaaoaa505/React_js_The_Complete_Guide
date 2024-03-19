@@ -15,7 +15,6 @@ const MealItemForm = (props: any) => {
 
         if (amount_value < 1 || amount_value > 5) {
             $valid_amount(false);
-
             return;
         }
 

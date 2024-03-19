@@ -11,8 +11,16 @@ const Cart = (props: any) => {
 
     const cartHasItems = cart_ctx.items.length > 0;
 
-    const removeItem = (id: number) => console.log('todo removeItem');
-    const addItem = (item: any) => console.log('todo addItem');
+    const removeItem = (id: number) => {
+        cart_ctx.removeItem(id);
+    };
+
+    const addItem = (item: any) => {
+        cart_ctx.addItem({
+            ...item,
+            amount: 1
+        });
+    };
 
     const orderAction = () => console.log('todo orderAction');
 

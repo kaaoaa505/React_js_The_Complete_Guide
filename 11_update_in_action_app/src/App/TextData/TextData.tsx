@@ -16,7 +16,7 @@ const TextData = (props: any) => {
     return (
         <div className="TextData">
             {show_txt && <p>This is new dynamic text from TextData component</p>}
-            {!show_txt && <Button onClick={showText}>Show text</Button>}
+            {!show_txt && <Button onClick={showText}>Show text data</Button>}
         </div>
     );
 };

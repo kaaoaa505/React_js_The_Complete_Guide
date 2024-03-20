@@ -3,6 +3,8 @@ import { useState } from 'react';
 import Button from '../UI/Button/Button';
 
 const TextData = (props: any) => {
+    console.log('TextData is running...');
+
     const [show_txt, $show_txt] = useState(false);
 
     const showText = () => {

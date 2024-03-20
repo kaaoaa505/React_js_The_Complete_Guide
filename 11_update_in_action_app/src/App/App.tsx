@@ -1,6 +1,9 @@
 
-import { useState } from 'react';
 import './App.scss';
+
+import { useState } from 'react';
+
+import TextStaticMemo from './TextStaticMemo/TextStaticMemo';
 import TextData from './TextData/TextData';
 import Button from './UI/Button/Button';
 
@@ -19,7 +22,10 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Hi there!</h1>
+      <h1>Component reload partial DOM</h1>
+      <TextStaticMemo />
+
+      <hr />
       <TextData />
 
       <hr />

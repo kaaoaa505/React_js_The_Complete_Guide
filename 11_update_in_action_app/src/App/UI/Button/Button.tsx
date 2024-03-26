@@ -1,6 +1,10 @@
 import './Button.scss';
 
+import React from 'react';
+
 const Button = (props: any) => {
+  console.log('Button is running...');
+
   return (
     <button
       type={props.type || 'button'}
@@ -13,4 +17,4 @@ const Button = (props: any) => {
   );
 };
 
-export default Button;
+export default React.memo(Button);

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import Button from '../UI/Button/Button';
 
@@ -7,13 +7,13 @@ const TextData = (props: any) => {
 
     const [show_txt, $show_txt] = useState(false);
 
-    const showText = () => {
-        $show_txt(true);
-
-        setTimeout(() => {
-            $show_txt(false);
-        }, 3000)
-    }
+    const showText = useCallback(() => {
+      $show_txt(true);
+  
+      setTimeout(() => {
+        $show_txt(false);
+      }, 3000)
+    }, []);
 
     return (
         <div className="TextData">

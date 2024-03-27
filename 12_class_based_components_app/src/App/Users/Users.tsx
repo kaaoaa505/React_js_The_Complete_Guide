@@ -19,6 +19,19 @@ class Users extends Component<any, any> {
         };
     }
 
+    componentDidMount(): void {
+        console.log('Users componentDidMount()');
+    }
+  
+    componentDidUpdate(prevProps: Readonly<{}>, prevState: Readonly<{}>, snapshot?: any): void {
+      console.log('Users componentDidUpdate()');
+        
+    }
+  
+    componentWillUnmount(): void {
+      console.log('Users componentWillUnmount()');
+    }
+    
     toggleUsersHandler = () => {
         this.setState((prev_state: any) => {
             return {

@@ -12,7 +12,7 @@ function App() {
 
   const [show_txt, $show_txt] = useState(false);
   const [allow_show_txt, $allow_show_txt] = useState(false);
-  const [list_title, $title] = useState('My List');
+  const [list_title, $list_title] = useState('My List');
 
   const showText = useCallback(() => {
     $show_txt(true);
@@ -28,7 +28,7 @@ function App() {
   }, []);
 
   const changeTitle = useCallback(() => {
-    $title('New Title');
+    $list_title('New Title');
   }, []);
 
   const items = useMemo(() => {
@@ -52,7 +52,7 @@ function App() {
 
       <hr />
 
-      <ListData title={list_title} items={items} />
+      <ListData list_title={list_title} items={items} />
       <Button onClick={changeTitle}>Change List Title</Button>
     </div>
   );

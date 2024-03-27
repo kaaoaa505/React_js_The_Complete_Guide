@@ -14,7 +14,7 @@ const ListData = (props: any) => {
 
     return (
         <div className='ListData'>
-            <h2>{props.title}</h2>
+            <h2>{props.list_title}</h2>
             <ul>
                 {sortedList.map((item: any) => (
                     <li key={item}>{item}</li>

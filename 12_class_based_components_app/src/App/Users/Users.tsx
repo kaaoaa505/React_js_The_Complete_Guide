@@ -17,11 +17,7 @@ class Users extends Component<any, any> {
     componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<any>, snapshot?: any): void {
         if ('users' in this.props && this.props.users !== prevProps.users) {
             const users = this.props.users;
-            this.setState((_prev_state: any) => {
-                return {
-                    users: users
-                }
-            });
+            this.setState({ users: users });
         }
     }
 

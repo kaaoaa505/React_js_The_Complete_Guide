@@ -1,6 +1,6 @@
 import './UsersSearch.scss';
 
-import { Fragment, useState, useEffect, SetStateAction, Component, ReactNode } from 'react';
+import { Fragment, Component, ReactNode } from 'react';
 
 import Users from '../Users';
 import DUMMY_USERS from '../../Samples/DUMMY_USERS';
@@ -19,11 +19,9 @@ class UsersSearch extends Component<any, any> {
         const searchChangeHandler = (event: any) => {
             const searchTerm: string = event.target.value;
 
-            this.setState((prev_state: any) => {
-                return {
-                    searchTerm: searchTerm,
-                    users: DUMMY_USERS.filter((user: any) => user.name.toUpperCase().includes(searchTerm.toUpperCase()))
-                }
+            this.setState({
+                searchTerm: searchTerm,
+                users: DUMMY_USERS.filter((user: any) => user.name.toUpperCase().includes(searchTerm.toUpperCase()))
             })
         };
 

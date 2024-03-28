@@ -1,18 +1,27 @@
 import './UsersSearch.scss';
 
-import { Fragment, Component, ReactNode } from 'react';
+import { Fragment, Component, ReactNode, Context } from 'react';
 
 import Users from '../Users';
-import DUMMY_USERS from '../../Samples/DUMMY_USERS';
+import UsersContext from '../../../store/UsersContext';
 
-class UsersSearch extends Component<any, any> {
+class UsersSearch extends Component<any, any, any> {
+    static contextType = UsersContext;
+    context!: React.ContextType<typeof UsersContext>;
+
     constructor(props: any) {
         super(props);
 
         this.state = {
             searchTerm: '',
-            users: DUMMY_USERS.slice()
+            users: []
         };
+    }
+
+    componentDidMount(): void {
+        this.setState({
+            users: this.context.users.slice()
+        });
     }
 
     render(): ReactNode {
@@ -21,8 +30,8 @@ class UsersSearch extends Component<any, any> {
 
             this.setState({
                 searchTerm: searchTerm,
-                users: DUMMY_USERS.filter((user: any) => user.name.toUpperCase().includes(searchTerm.toUpperCase()))
-            })
+                users: this.context.users.slice().filter((user: any) => user.name.toUpperCase().includes(searchTerm.toUpperCase()))
+            });
         };
 
         return (

@@ -4,35 +4,28 @@ import { Component, ReactNode } from 'react';
 
 import User from './User/User';
 
-const DUMMY_USERS = [
-    { id: 1, name: 'Khaled' },
-    { id: 2, name: 'Allam' },
-    { id: 3, name: 'Ahmed' },
-];
-
 class Users extends Component<any, any> {
     constructor(props: any) {
         super(props);
 
         this.state = {
-            showUsers: true
+            showUsers: true,
+            users: props.users.slice()
         };
     }
 
-    componentDidMount(): void {
-        console.log('Users componentDidMount()');
+    componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<any>, snapshot?: any): void {
+        if ('users' in this.props && this.props.users !== prevProps.users) {
+            const users = this.props.users;
+            this.setState((_prev_state: any) => {
+                return {
+                    users: users
+                }
+            });
+        }
     }
-  
-    componentDidUpdate(prevProps: Readonly<{}>, prevState: Readonly<{}>, snapshot?: any): void {
-      console.log('Users componentDidUpdate()');
-        
-    }
-  
-    componentWillUnmount(): void {
-      console.log('Users componentWillUnmount()');
-    }
-    
-    toggleUsersHandler = () => {
+
+    toggleUsersHandler() {
         this.setState((prev_state: any) => {
             return {
                 showUsers: !prev_state.showUsers
@@ -43,15 +36,15 @@ class Users extends Component<any, any> {
     render(): ReactNode {
         const user_list_html = (
             <ul>
-                {DUMMY_USERS.map((user) => (
+                {this.state.users.map((user: any) => (
                     <User key={user.id} name={user.name} />
                 ))}
             </ul>
         );
-        
+
         return (
             <div className='Users'>
-                <button onClick={this.toggleUsersHandler}>
+                <button onClick={this.toggleUsersHandler.bind(this)}>
                     {this.state.showUsers ? 'Hide' : 'Show'} Users
                 </button>
 

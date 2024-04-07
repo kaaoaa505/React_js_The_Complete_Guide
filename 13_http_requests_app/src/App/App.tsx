@@ -11,12 +11,18 @@ function App() {
   const fetchMoveies = () => {
     const result = fetch('https://swapi.dev/api/films');
     result.then(async (response: any) => {
-      const data = await response.json();
-      
-      console.log(data);
-
-      $movies(data.results);
-    })
+      return await response.json();
+    }).then(data => {
+      const targetResults = data.results.map((movie: any) => {
+        return {
+          id: movie.episode_id ,
+          title: movie.title,
+          releaseDate: movie.release_date,
+          openingText: movie.opening_crawl,
+        }
+      });
+      $movies(targetResults);
+    });
   }
   return (
     <div className="App">

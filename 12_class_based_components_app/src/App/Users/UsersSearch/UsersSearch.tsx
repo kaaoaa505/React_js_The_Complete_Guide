@@ -4,6 +4,7 @@ import { Fragment, Component, ReactNode, Context } from 'react';
 
 import Users from '../Users';
 import UsersContext from '../../../store/UsersContext';
+import ErrorBoundaries from '../../../ErrorBoundaries/ErrorBoundaries';
 
 class UsersSearch extends Component<any, any, any> {
     static contextType = UsersContext;
@@ -40,7 +41,9 @@ class UsersSearch extends Component<any, any, any> {
                     <input type='search' onChange={searchChangeHandler} />
                 </div>
 
-                <Users users={this.state.users} searchTerm={this.state.searchTerm} />
+                <ErrorBoundaries>
+                    <Users users={this.state.users} searchTerm={this.state.searchTerm} />
+                </ErrorBoundaries>
             </Fragment>
         );
     }

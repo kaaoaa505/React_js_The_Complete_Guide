@@ -37,7 +37,8 @@ function App() {
       </section>
       <section>
         {is_loading && <p>Loading....</p>}
-        {!is_loading && <Movies movies={movies} />}
+        {!is_loading && movies.length === 0 && <p>No movie found.</p>}
+        {!is_loading && movies.length > 0 && <Movies movies={movies} />}
       </section>
     </div>
   );

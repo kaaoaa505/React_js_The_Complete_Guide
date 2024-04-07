@@ -7,8 +7,11 @@ import { useState } from 'react';
 
 function App() {
   let [movies, $movies] = useState(MoviesExamples);
+  let [is_loading, $is_loading] = useState(false);
 
   const fetchMoveies = async () => {
+    $is_loading(true);
+
     const response = await fetch('https://swapi.dev/api/films');
 
     const json_data = await response.json();
@@ -23,15 +26,18 @@ function App() {
     });
 
     $movies(results);
+
+    $is_loading(false);
   }
-  
+
   return (
     <div className="App">
       <section>
         <button onClick={fetchMoveies}>Load Movies</button>
       </section>
       <section>
-        <Movies movies={movies} />
+        {is_loading && <p>Loading....</p>}
+        {!is_loading && <Movies movies={movies} />}
       </section>
     </div>
   );

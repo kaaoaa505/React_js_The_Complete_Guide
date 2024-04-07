@@ -8,22 +8,23 @@ import { useState } from 'react';
 function App() {
   let [movies, $movies] = useState(MoviesExamples);
 
-  const fetchMoveies = () => {
-    const result = fetch('https://swapi.dev/api/films');
-    result.then(async (response: any) => {
-      return await response.json();
-    }).then(data => {
-      const targetResults = data.results.map((movie: any) => {
-        return {
-          id: movie.episode_id ,
-          title: movie.title,
-          releaseDate: movie.release_date,
-          openingText: movie.opening_crawl,
-        }
-      });
-      $movies(targetResults);
+  const fetchMoveies = async () => {
+    const response = await fetch('https://swapi.dev/api/films');
+
+    const json_data = await response.json();
+
+    const results = json_data.results.map((movie: any) => {
+      return {
+        id: movie.episode_id,
+        title: movie.title,
+        releaseDate: movie.release_date,
+        openingText: movie.opening_crawl,
+      }
     });
+
+    $movies(results);
   }
+  
   return (
     <div className="App">
       <section>

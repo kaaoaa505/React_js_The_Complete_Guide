@@ -1,6 +1,6 @@
 import './App.scss';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Movies from './Movies/Movies';
 import MoviesExamples from '../Data/Examples/MoviesExamples';
@@ -11,6 +11,10 @@ function App() {
   let [movies, $movies] = useState(MoviesExamples);
   let [is_loading, $is_loading] = useState(false);
   let [error, $error] = useState('');
+
+  useEffect(() => {
+    fetchMoveies();
+  }, []);
 
   const fetchMoveies = async () => {
     $is_loading(true);
@@ -28,7 +32,6 @@ function App() {
     if (!response.ok) throw new Error('Something went wrong.');
 
     try {
-
       const json_data = await response.json();
 
       const results = json_data.results.map((movie: any) => {

@@ -1,9 +1,9 @@
 import './App.scss';
 
-import Movies from './Movies/Movies';
-
-import MoviesExamples from '../Data/Examples/MoviesExamples';
 import { useState } from 'react';
+
+import Movies from './Movies/Movies';
+import MoviesExamples from '../Data/Examples/MoviesExamples';
 
 const empty_movies = new Array;
 
@@ -24,6 +24,8 @@ function App() {
         "Accept": "application/json",
       },
     });
+
+    if (!response.ok) throw new Error('Something went wrong.');
 
     try {
 
@@ -46,6 +48,18 @@ function App() {
     $is_loading(false);
   }
 
+  let main_content: any = '';
+
+  if (is_loading) {
+    main_content = <p>Loading....</p>
+  } else {
+    if (movies.length === 0) {
+      main_content = <p>No movie found.</p>
+    } else if (movies.length > 0) {
+      main_content = <Movies movies={movies} />
+    }
+  }
+
   return (
     <div className="App">
       <section>
@@ -55,9 +69,7 @@ function App() {
       {error !== '' && <section>{error}</section>}
 
       <section>
-        {is_loading && <p>Loading....</p>}
-        {!is_loading && movies.length === 0 && <p>No movie found.</p>}
-        {!is_loading && movies.length > 0 && <Movies movies={movies} />}
+        {main_content}
       </section>
     </div>
   );

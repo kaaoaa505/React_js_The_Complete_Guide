@@ -1,6 +1,6 @@
 import './App.scss';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import Movies from './Movies/Movies';
 import MoviesExamples from '../Data/Examples/MoviesExamples';
@@ -12,29 +12,27 @@ function App() {
   let [is_loading, $is_loading] = useState(false);
   let [error, $error] = useState('');
 
-  useEffect(() => {
-    fetchMoveies();
-  }, []);
-
-  const fetchMoveies = async () => {
+  const fetchMoveies = useCallback(async () => {
     $is_loading(true);
     $error('');
 
     $movies(empty_movies);
 
-    const response = await fetch('https://swapi.dev/api/films', {
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-      },
-    });
+    const response = await fetch('https://swapi.info/api/films');
+    // const response = await fetch('https://swapi.info/api/films', {
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     "Accept": "application/json",
+    //   },
+    // });
 
     if (!response.ok) throw new Error('Something went wrong.');
 
     try {
       const json_data = await response.json();
 
-      const results = json_data.results.map((movie: any) => {
+      // const results = json_data.results.map((movie: any) => {
+      const results = json_data.map((movie: any) => {
         return {
           id: movie.episode_id,
           title: movie.title,
@@ -49,7 +47,11 @@ function App() {
     }
 
     $is_loading(false);
-  }
+  }, []);
+
+  // useEffect(() => {
+  //   fetchMoveies();
+  // }, []);
 
   let main_content: any = '';
 

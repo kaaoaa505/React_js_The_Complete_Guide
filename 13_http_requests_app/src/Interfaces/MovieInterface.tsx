@@ -1,8 +1,8 @@
 interface MovieInterface {
     id: any;
     title: any;
-    releaseDate: any;
-    openingText: any;
+    release_date: any;
+    opening_crawl: any;
 };
 
 export default MovieInterface;

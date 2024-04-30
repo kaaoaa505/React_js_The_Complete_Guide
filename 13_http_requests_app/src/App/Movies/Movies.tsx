@@ -11,10 +11,10 @@ const Movies = (props: any) => {
     <ul className='Movies'>
       {props.movies.map((movie: MovieInterface) => (
         <Movie
-          key={increment_index++}
+          key={movie.id}
           title={movie.title}
-          releaseDate={movie.releaseDate}
-          openingText={movie.openingText}
+          release_date={movie.release_date}
+          opening_crawl={movie.opening_crawl}
         />
       ))}
     </ul>

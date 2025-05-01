@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="assets/styles/main.css" />
     <meta charset="UTF-8" />
 
+    <!-- <script src="assets/scripts/app.js" defer></script> -->
     <script type="module" src="assets/scripts/app.js"></script>
   </head>
 
@@ -25,5 +26,23 @@
       <li>Essential Features Used By React</li>
       <li>Tricky Parts</li>
     </ul>
+
+    <script type="module" defer>
+      doSomething(999);
+
+      window.addEventListener("DOMContentLoaded", () => {
+        if (typeof doSomething === "function") {
+          doSomething(1);
+          doSomething(2);
+          doSomething(3);
+          doSomething(4);
+          doSomething(5);
+          doSomething(6);
+          doSomething(7);
+        } else {
+          console.error("doSomething is not defined");
+        }
+      });
+    </script>
   </body>
 </html>

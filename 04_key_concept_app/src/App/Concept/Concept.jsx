@@ -1,4 +1,4 @@
-import './Concept.css';
+import './Concept.scss';
 
 function Concept({ concept }) {
     return (

@@ -1,0 +1,51 @@
+// Variables for colors and sizes
+$primary-bg: #282c34;
+$primary-color: #ffffff;
+$link-color: #61dafb;
+$logo-size: 40vmin;
+$font-size-base: 10px;
+$font-size-scale: 2vmin;
+
+.App {
+  text-align: center;
+
+  &-logo {
+    height: $logo-size;
+    pointer-events: none;
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+
+  &-header {
+    background-color: $primary-bg;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(#{$font-size-base} + #{$font-size-scale});
+    color: $primary-color;
+  }
+
+  &-link {
+    color: $link-color;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Keyframes
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

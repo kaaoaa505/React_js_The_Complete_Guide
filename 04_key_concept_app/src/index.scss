@@ -1,5 +1,7 @@
+// Import Google Font
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
 
+// Global Styles
 * {
   box-sizing: border-box;
 }
@@ -9,38 +11,43 @@ body {
   font-family: 'Quicksand', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color: #2d2834; */
   background: radial-gradient(#27212e, #221530);
   color: #d9c9ee;
+  line-height: 1.6;
 }
 
+// Header Styles
 header {
-  padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 2rem;
   margin-bottom: 3rem;
   text-align: center;
+
+  img {
+    width: 7rem;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0;
+    font-weight: 400;
+  }
 }
 
-header img {
-  width: 7rem;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 1.5rem;
-}
-
-header p {
-  margin: 0;
-}
-
+// Concepts Section
 #concepts {
   max-width: 50rem;
   margin: 2rem auto;
   display: flex;
   justify-content: center;
   gap: 1.5rem;
+  // flex-wrap: wrap;
 }

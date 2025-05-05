@@ -1,3 +1,5 @@
+import "./ExpensesChart.scss";
+
 import Chart from "../../_components/Chart/Chart";
 
 const ExpensesChart = (props) => {

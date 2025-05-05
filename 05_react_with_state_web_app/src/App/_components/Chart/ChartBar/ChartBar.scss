@@ -1,0 +1,38 @@
+$bar-width: 30px;
+$border-color: #313131;
+$fill-color: blue;
+$background-color: lightblue;
+$transition-duration: 0.3s;
+$transition-ease: ease-out;
+$label-font-size: 0.5rem;
+
+.ChartBar {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .inner {
+    height: 100%;
+    width: $bar-width;
+    border: 1px solid $border-color;
+    background-color: $background-color;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    .fill {
+      background-color: $fill-color;
+      width: 100%;
+      transition: all $transition-duration $transition-ease;
+      font-size: xx-small;
+    }
+  }
+
+  .label {
+    font-weight: bold;
+    font-size: $label-font-size;
+    text-align: center;
+  }
+}

@@ -1,4 +1,4 @@
-import "./ExpensesList.css";
+import "./ExpensesList.scss";
 
 import ExpenseItem from "../ExpenseItem/ExpenseItem";
 

@@ -1,0 +1,92 @@
+// Define SASS variables at the top
+$bg-light: lightgray;
+$text-dark: #3a3a3a;
+$text-gray: gray;
+$text-white: white;
+$price-bg: white;
+$delete-bg: darkred;
+$delete-hover: #d9363e;
+$delete-active: #b52a2f;
+$border-radius: 12px;
+
+.ExpenseItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  border-radius: $border-radius;
+  background-color: $bg-light;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+
+  .description {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: flex-end;
+    flex: 1;
+    gap: 1rem;
+
+    h2 {
+      flex: 1;
+      margin: 0 1rem;
+      font-size: 1rem;
+      color: $text-white;
+      text-shadow: 0.1rem 0.1rem $text-dark;
+    }
+  }
+
+  .price {
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: $price-bg;
+    border: 1px solid white;
+    padding: 0.5rem;
+    margin-right: 1.5rem;
+    border-radius: $border-radius;
+    white-space: nowrap;
+  }
+
+  .delete-button {
+    background-color: $delete-bg;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover,
+    &:focus {
+      background-color: $delete-hover;
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+    }
+
+    &:active {
+      background-color: $delete-active;
+    }
+  }
+
+  @media (min-width: 580px) {
+    .description {
+      flex-direction: row;
+      align-items: center;
+
+      h2 {
+        font-size: 1.25rem;
+      }
+    }
+
+    .price {
+      font-size: 1.25rem;
+      padding: 0.5rem 1.5rem;
+    }
+
+    .delete-button {
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+}

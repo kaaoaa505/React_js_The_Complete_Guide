@@ -1,6 +1,4 @@
-import "./ExpenseItem.css";
-
-import { useState } from "react";
+import "./ExpenseItem.scss";
 
 import ExpenseDate from "../ExpenseDate/ExpenseDate";
 
@@ -19,7 +17,7 @@ const ExpenseItem = (props) => {
         <div className="price">${props.expense.amount}</div>
       </div>
 
-      <button data-id={props.expense.id} onClick={deleteExpense}>
+      <button className="delete-button" data-id={props.expense.id} onClick={deleteExpense}>
         Delete
       </button>
     </div>

@@ -1,4 +1,4 @@
-import "./ExpensesFilter.css";
+import "./ExpensesFilter.scss";
 
 const ExpensesFilter = (props) => {
   const filterChange = (event) => {

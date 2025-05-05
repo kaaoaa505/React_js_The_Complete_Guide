@@ -1,4 +1,4 @@
-import "./ExpenseCreate.css";
+import "./ExpenseCreate.scss";
 
 import ExpenseForm from "../ExpenseForm/ExpenseForm";
 

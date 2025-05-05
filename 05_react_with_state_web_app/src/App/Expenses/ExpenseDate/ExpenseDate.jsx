@@ -1,4 +1,4 @@
-import "./ExpenseDate.css";
+import "./ExpenseDate.scss";
 
 const ExpenseDate = (props) => {
   return (

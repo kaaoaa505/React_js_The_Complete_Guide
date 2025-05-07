@@ -7,6 +7,9 @@ const ExpenseItem = (props) => {
     let data_id = event.target.attributes["data-id"].value;
     props.deleteExpense(data_id);
   };
+  
+  console.log('ExpenseItem is called');
+  
 
   return (
     <div className="ExpenseItem">

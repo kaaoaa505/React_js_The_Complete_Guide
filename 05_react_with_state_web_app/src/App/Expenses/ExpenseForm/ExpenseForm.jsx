@@ -59,7 +59,7 @@ const ExpenseForm = (props) => {
             value={date.toISOString().slice(0, 10)}
             onChange={dateChange}
             min="2023-01-01"
-            max="2023-12-30"
+            max="2999-12-30"
           />
         </div>
 

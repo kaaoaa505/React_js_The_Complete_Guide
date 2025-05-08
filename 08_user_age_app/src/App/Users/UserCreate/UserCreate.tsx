@@ -1,57 +1,45 @@
 import Button from '../../_components/Button/Button';
 import './UserCreate.scss';
 
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 
 const UserCreate = (props: any) => {
-    const [username, $username] = useState('');
-    const [age, $age] = useState(0);
+    const username_ref = useRef<HTMLInputElement>(null);
+    const age_ref = useRef<HTMLInputElement>(null);
 
-    let name_input_ref = useRef(null);
-    let age_input_ref = useRef(null);
-
-    const usernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        $username(event.target.value);
-    };
-
-    const ageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        $age(Number(event.target.value));
-    };
-
-    const formSubmit = (event: React.FormEvent<HTMLDivElement>) => {
+    const formSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        console.log(name_input_ref);
-        console.log(name_input_ref.current);
-        
-        console.log(age_input_ref);
-        console.log(age_input_ref.current);
+        const username = username_ref.current?.value || '';
+        const age = parseInt(age_ref.current?.value || '0', 10);
 
-        if(username.trim().length === 0 || age < 1){
-            console.log('Invalid input.');
-            
+        console.warn('username is: ', username);
+        console.warn('age is: ', age);
+
+        if (username.trim().length === 0 || age < 1) {
+            console.error('Invalid input.');
             props.errorsSubmit();
             return;
         }
 
-        console.log('form submitted!.', username, age);
+        console.info('form submitted!', username, age);
         props.userCreateSubmit(username, age);
 
-        $username('');
-        $age(0);
+        if (username_ref.current) username_ref.current.value = '';
+        if (age_ref.current) age_ref.current.value = '';
     };
 
     return (
-        <div className="UserCreate" onSubmit={formSubmit}>
-            <form>
+        <div className="UserCreate">
+            <form onSubmit={formSubmit}>
                 <div className='form-group'>
                     <label htmlFor="username">User Name:</label>
-                    <input id="username" type="text" value={username} onChange={usernameChange} placeholder='Name...' ref={name_input_ref} />
+                    <input id="username" type="text" placeholder='Name...' ref={username_ref} />
                 </div>
 
                 <div className='form-group'>
                     <label htmlFor="age">Age:</label>
-                    <input id="age" type="number" min={0} max={999} value={age === 0 ? '' : age} onChange={ageChange} placeholder='Age (years)...' ref={age_input_ref} />
+                    <input id="age" type="number" min={0} max={999} placeholder='Age (years)...' ref={age_ref} />
                 </div>
 
                 <Button>Submit</Button>

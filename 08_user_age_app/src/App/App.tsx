@@ -9,6 +9,8 @@ import ErrorModal from './_components/ErrorModal/ErrorModal';
 import Wrapper from './_components/Wrapper/Wrapper';
 import ReactDOM from 'react-dom';
 
+const root_overlays = document.getElementById('root_overlays');
+
 const initial_users: any[] = [];
 const initial_errors = {
   title: '',
@@ -52,7 +54,7 @@ const App = () => {
 
       <Users users={users} />
 
-      {ReactDOM.createPortal(<ErrorModal title={errors.title} content={errors.content} onErrorConfirm={errorHide} />, document.getElementById('root_overlays') as HTMLElement)}
+      {ReactDOM.createPortal(<ErrorModal title={errors.title} content={errors.content} onErrorConfirm={errorHide} />, root_overlays as HTMLElement)}
 
     </div>
   );

@@ -1,11 +1,11 @@
-import './App.scss';
+import "./App.scss";
 
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from "react";
 
-import MainHeader from './_partial/MainHeader/MainHeader';
-import Home from './Home/Home';
-import Login from './Login/Login';
-import AuthContext, { AuthContextProvider } from '../store/AuthContext';
+import MainHeader from "./_partial/MainHeader/MainHeader";
+import Home from "./Home/Home";
+import Login from "./Login/Login";
+import AuthContext from "../store/AuthContext";
 
 function App() {
   const ctx = useContext(AuthContext);

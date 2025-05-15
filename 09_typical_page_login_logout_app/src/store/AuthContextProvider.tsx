@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AuthContext from "./AuthContext";
+import { toast } from "react-toastify";
 
 export const AuthContextProvider = (props: any) => {
     const [isLoggedIn, $isLoggedIn] = useState(false);
@@ -22,6 +23,8 @@ export const AuthContextProvider = (props: any) => {
   
     const logoutHandler = () => {
       $isLoggedIn(false);
+
+      toast.warning("Successfully logged out.");
   
       localStorage.removeItem("is_logged_in");
     };

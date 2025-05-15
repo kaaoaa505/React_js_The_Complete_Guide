@@ -1,4 +1,5 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
+import { toast } from "react-toastify";
 
 import "./Login.scss";
 import Card from "../_partial/Card/Card";
@@ -31,10 +32,18 @@ const Login = (props: any) => {
   const submitHandler = (event: any) => {
     event.preventDefault();
 
-    ctx.onLogin(
-      emailHandler.emailState.value,
-      passwordHandler.passwordState.value
-    );
+    if (formIsValid) {
+      ctx.onLogin(
+        emailHandler.emailState.value,
+        passwordHandler.passwordState.value
+      );
+
+      toast.success("Successfully logged in.");
+    } else if (!emailHandler.emailState.is_valid) {
+      toast.error("Invalid email");
+    } else if (!passwordHandler.passwordState.is_valid) {
+      toast.error("Invalid password");
+    }
   };
 
   return (

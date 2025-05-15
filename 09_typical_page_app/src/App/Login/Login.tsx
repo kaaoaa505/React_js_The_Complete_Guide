@@ -21,7 +21,7 @@ const Login = (props: any) => {
       $formIsValid(
         emailHandler.email_is_valid && passwordHandler.password_is_valid
       );
-    }, 500);
+    }, 100);
 
     return () => {
       clearTimeout(identifier);
@@ -40,13 +40,6 @@ const Login = (props: any) => {
   return (
     <Card className="Login">
       <form onSubmit={submitHandler} autoComplete="off">
-        <input
-          autoComplete="false"
-          name="hidden"
-          type="text"
-          style={{ display: "none" }}
-        />
-
         <Input
           valid={emailHandler.emailState.is_valid}
           id="email"

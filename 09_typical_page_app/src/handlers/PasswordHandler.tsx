@@ -1,7 +1,8 @@
 import { useReducer } from "react";
 import PasswordReducer from "../reducers/PasswordReducer";
+import PasswordState from "../interfaces/PasswordState";
 
-const init_state = {
+const init_state: PasswordState = {
     value: '',
     is_valid: false
 };

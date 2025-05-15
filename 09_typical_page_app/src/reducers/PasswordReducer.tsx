@@ -1,24 +1,30 @@
-const init_state = {
-    value: '',
-    is_valid: false
+import PasswordAction from "../interfaces/PasswordAction";
+import PasswordState from "../interfaces/PasswordState";
+
+const init_state: PasswordState = {
+  value: "",
+  is_valid: false,
 };
 
-const PasswordReducer = (state: any, action: any) => {
-    if (action.type === 'USER_INPUT') {
-        return {
-            value: action.value,
-            is_valid: action.value.trim().length > 6
-        };
-    }
+const PasswordReducer = (state: PasswordState, action: PasswordAction): PasswordState => {
+  if (action.type === "USER_INPUT") {
+    // Ensure we always return a string for value, even if action.value is undefined
+    const newValue = action.value ?? state.value;
 
-    if (action.type === 'USER_BLUR') {
-        return {
-            value: state.value,
-            is_valid: state.value.trim().length > 6
-        };
-    }
+    return {
+      value: newValue,
+      is_valid: action.value ? action.value.trim().length > 6 : false,
+    };
+  }
 
-    return init_state;
-}
+  if (action.type === "USER_BLUR") {
+    return {
+      value: state.value,
+      is_valid: state.value.trim().length > 6,
+    };
+  }
+
+  return init_state;
+};
 
 export default PasswordReducer;

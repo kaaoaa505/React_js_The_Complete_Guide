@@ -8,10 +8,10 @@ import Cart from './Cart/Cart';
 import CartProvider from '../store/CartProvider';
 
 function App() {
-  const [showCart, $showCart] = useState(false);
+  const [show_cart, $show_cart] = useState(false);
 
   const cartHandler = (cart_show: boolean) => {
-    $showCart(cart_show);
+    $show_cart(cart_show);
   }
 
   const onShowCart = () => {
@@ -25,7 +25,7 @@ function App() {
   return (
     <CartProvider>
       <div className="App">
-        {showCart && <Cart hideCart={onHideCart} />}
+        {show_cart && <Cart hideCart={onHideCart} />}
 
         <Header showCart={onShowCart} />
         <Meals />

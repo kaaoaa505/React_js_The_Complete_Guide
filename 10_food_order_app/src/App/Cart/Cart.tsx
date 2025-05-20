@@ -7,16 +7,16 @@ import CartContext from '../../store/CartContext';
 import CartItem from './CartItem/CartItem';
 
 const Cart = (props: any) => {
-    const cart_ctx = useContext(CartContext);
+    const cart_context = useContext(CartContext);
 
-    const cartHasItems = cart_ctx.items.length > 0;
+    const cartHasItems = cart_context.items.length > 0;
 
     const removeItem = (id: number) => {
-        cart_ctx.removeItem(id);
+        cart_context.removeItem(id);
     };
 
     const addItem = (item: any) => {
-        cart_ctx.addItem({
+        cart_context.addItem({
             ...item,
             amount: 1
         });
@@ -24,11 +24,11 @@ const Cart = (props: any) => {
 
     const orderAction = () => console.log('todo orderAction');
 
-    const cartItems = cart_ctx.items.map((item: any) =>
+    const cartItems = cart_context.items.map((item: any) =>
         <CartItem key={item.id} item={item} removeItem={removeItem.bind(null, item.id)} addItem={addItem.bind(null, item)} />
     );
 
-    const total_amount = `$${cart_ctx.total_amount.toFixed(2)}`;
+    const total_amount = `$${cart_context.total_amount.toFixed(2)}`;
 
     return (
         <Modal onClick={props.hideCart}>

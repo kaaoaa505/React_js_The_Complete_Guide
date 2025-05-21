@@ -1,88 +1,71 @@
-import './App.scss';
+import "./App.scss";
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from "react";
 
-import Movies from './Movies/Movies';
-import MoviesExamples from '../Data/Examples/MoviesExamples';
-import MovieCreate from './Movies/MovieCreate/MovieCreate';
+import Movies from "./Movies/Movies";
+import MovieCreate from "./Movies/MovieCreate/MovieCreate";
 
-const empty_movies = new Array;
-
-const firebase_request_link = 'https://react-http-requests-app-a482e-default-rtdb.firebaseio.com/movies.json';
+const API_BASE_URL = "http://localhost:3001/api";
 
 function App() {
-  let [movies, $movies] = useState(MoviesExamples);
+  let [movies, $movies] = useState([]);
   let [is_loading, $is_loading] = useState(false);
-  let [error, $error] = useState('');
+  let [error, $error] = useState("");
 
-  const fetchMoveies = useCallback(async () => {
+  const fetchMovies = useCallback(async () => {
     $is_loading(true);
-    $error('');
-
-    $movies(empty_movies);
-
-    const response = await fetch(firebase_request_link);
-
-    if (!response.ok) throw new Error('Something went wrong.');
+    $error("");
 
     try {
-      const json_data = await response.json();
+      const response = await fetch(`${API_BASE_URL}/movies`);
 
-      let movies_list: any = [];
-
-      for (const key in json_data) {
-        movies_list.push({
-          id: key,
-          title: json_data[key].title,
-          release_date: json_data[key].release_date,
-          opening_crawl: json_data[key].opening_crawl,
-        });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
 
+      const movies_list = await response.json();
       $movies(movies_list);
     } catch (new_error: any) {
-      $error('Response status: ' + response.status.toString());
+      $error(new_error.message || "Failed to fetch movies");
     }
 
     $is_loading(false);
   }, []);
 
   useEffect(() => {
-    $movies([]);
-
-    fetchMoveies();
-  }, []);
+    fetchMovies();
+  }, [fetchMovies]);
 
   const createMovie = async (movie: any) => {
-    console.log('todo: movie submit, ', movie);
-    console.log('todo: App createMovie method.');
-    const response = await fetch(firebase_request_link, {
-      method: 'POST',
-      body: JSON.stringify(movie),
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-      },
-    });
+    try {
+      const response = await fetch(`${API_BASE_URL}/movies`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(movie),
+      });
 
-    console.log('response is: ', response);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
-    const data = await response.json();
+      // Refresh the movies list after creating a new one
+      await fetchMovies();
+    } catch (error: any) {
+      $error(error.message || "Failed to create movie");
+    }
+  };
 
-    console.log('data is: ', data);
-
-  }
-
-  let main_content: any = '';
+  let main_content: any = "";
 
   if (is_loading) {
-    main_content = <p>Loading....</p>
+    main_content = <p>Loading....</p>;
   } else {
     if (movies.length === 0) {
-      main_content = <p>No movie found.</p>
+      main_content = <p>No movie found.</p>;
     } else if (movies.length > 0) {
-      console.log('movies is: ', movies)
-      main_content = <Movies movies={movies} />
+      main_content = <Movies movies={movies} />;
     }
   }
   return (
@@ -92,14 +75,12 @@ function App() {
       </section>
 
       <section>
-        <button onClick={fetchMoveies}>Load Movies</button>
+        <button onClick={fetchMovies}>Load Movies</button>
       </section>
 
-      {error !== '' && <section>{error}</section>}
+      {error !== "" && <section>{error}</section>}
 
-      <section>
-        {main_content}
-      </section>
+      <section>{main_content}</section>
     </div>
   );
 }

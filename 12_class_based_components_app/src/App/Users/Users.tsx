@@ -14,6 +14,7 @@ class Users extends Component<any, any> {
       showUsers: true,
       users:
         props.users && Array.isArray(props.users) ? props.users.slice() : [], // Default to empty array if users are not passed correctly
+      hasShownNoUsersToast: false, // New state to track if the "No users" toast has been shown
     };
   }
 
@@ -23,8 +24,14 @@ class Users extends Component<any, any> {
     prevState: Readonly<any>,
     snapshot?: any
   ): void {
-    if (prevState.users.length === 0) {
+    // Only show the warning toast if users array is empty and we haven't already shown the toast
+    if (
+      this.state.users.length === 0 &&
+      prevState.users.length !== 0 &&
+      !this.state.hasShownNoUsersToast
+    ) {
       toast.warning("No users provided.");
+      this.setState({ hasShownNoUsersToast: true }); // Mark the toast as shown
     }
 
     // Update state if users prop changes and is different from the previous state

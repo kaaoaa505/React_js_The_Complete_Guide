@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 
 const MyForm = () => {
     const [name_value, $name_value] = useState('');
+    const [name_is_valid, $name_is_valid] = useState(true);
     const email_ref = useRef<HTMLInputElement>(null);
 
     const nameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -14,8 +15,11 @@ const MyForm = () => {
 
         if(!name_value.trim()) {
             console.error('Name is required');
+            $name_is_valid(false);
             return;
-        }
+        }else {
+            $name_is_valid(true);
+        }   
 
         if (!email_ref.current || !email_ref.current.value.trim()) {
             console.error('Email input ref is not set');
@@ -31,6 +35,7 @@ const MyForm = () => {
       <div>
         <label htmlFor="name">Name:</label>
         <input type="text" id="name" name="name" onChange={nameChange} />
+        {name_is_valid ? null : <span style={{color: 'red'}}>Name is required</span>}
       </div>
       <div>
         <label htmlFor="email">Email:</label>

@@ -12,6 +12,16 @@ const MyForm = () => {
     const formSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        if(!name_value.trim()) {
+            console.error('Name is required');
+            return;
+        }
+
+        if (!email_ref.current || !email_ref.current.value.trim()) {
+            console.error('Email input ref is not set');
+            return;
+        }
+
         console.info('Form submitted with name:', name_value);
         console.info('Email input ref value:', email_ref.current?.value);
     }
